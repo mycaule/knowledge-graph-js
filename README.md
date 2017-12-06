@@ -6,3 +6,4 @@ Command line interface for Google Knowledge Graph
 - https://www.npmjs.com/package/knowledge-node
 - https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js
 - https://www.npmjs.com/package/archy
+- https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a
