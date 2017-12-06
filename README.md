@@ -17,7 +17,7 @@
   <br>
 </p>
 
-This library allows user to query Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises.
+This library is a client for Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises allowing `then / catch` and `async / await` syntax.
 
 ##  Usage
 
@@ -42,8 +42,6 @@ knowledge.search('katy perry').then(res =>
 ```
 
 ## References
-- https://github.com/krismuniz/google-kgsearch
-- https://www.npmjs.com/package/knowledge-node
 - https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js
 - https://www.npmjs.com/package/archy
 - https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a

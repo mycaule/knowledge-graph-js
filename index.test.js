@@ -12,5 +12,6 @@ test('Knowledge API', async t => {
   t.is(topResult['@type'], 'EntitySearchResult')
   t.is(typeof topResult.result, 'object')
   t.is(topResult.result.description, 'American singer-songwriter')
+  t.true(topResult.result['@type'].includes('Person'))
   t.true(topResult.resultScore > 100)
 })
