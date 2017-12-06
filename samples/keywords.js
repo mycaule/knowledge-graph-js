@@ -1,6 +1,8 @@
 const natural = require('natural')
 const knowledge = require('../index')
 
+const tokenizer = new natural.WordTokenizer()
+
 knowledge.search('nelson mandela').then(res => {
   const topResult = res.itemListElement[0].result
   const {description, detailedDescription} = topResult
@@ -8,6 +10,8 @@ knowledge.search('nelson mandela').then(res => {
   console.log(description)
 
   natural.PorterStemmer.attach()
+  console.log(tokenizer.tokenize(description))
   console.log(description.tokenizeAndStem())
+  console.log(tokenizer.tokenize(detailedDescription.articleBody))
   console.log(detailedDescription.articleBody.tokenizeAndStem())
 })

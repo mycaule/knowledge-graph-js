@@ -1,10 +1,9 @@
 /* eslint import/no-unresolved: [2, { ignore: ['\.config.js$'] }] */
+/* eslint import/no-unassigned-import: "off" */
 
 try {
-  const toto = require('./config')
-  console.log(toto) // -FIXME
+  require('./config')
 } catch (err) {
-  console.log(err)
   console.log('Using environment parameters')
 }
 

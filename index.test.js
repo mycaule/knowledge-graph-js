@@ -2,7 +2,7 @@ import test from 'ava'
 
 const knowledge = require('./index')
 
-test('Knowledge API', async t => {
+test('Knowledge Graph Search API', async t => {
   const results = await knowledge.search('katy perry')
   t.is(typeof results['@context'], 'object')
   t.is(results['@type'], 'ItemList')

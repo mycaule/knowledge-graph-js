@@ -21,7 +21,7 @@ This library is a client for Google [Knowledge Graph Search API](https://develop
 
 ##  Usage
 
-In Google Cloud Platform, make sure to activate *KnowledgeGraph Search API* and load your `GOOGLE_API_KEY` into `process.env`.
+In Google Cloud Platform, make sure to activate *Knowledge Graph Search API* and load your `GOOGLE_API_KEY` into `process.env`.
 
 See [the samples folder](/samples) for more usecases.
 
