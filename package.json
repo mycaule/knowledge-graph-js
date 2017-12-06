@@ -1,0 +1,33 @@
+{
+  "name": "knowledge-graph-js",
+  "version": "1.0.0",
+  "description": "Yet another client for Google Knowledge Graph",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mycaule/knowledge-graph-js.git"
+  },
+  "author": "Michel Hua",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mycaule/knowledge-graph-js/issues"
+  },
+  "homepage": "https://github.com/mycaule/knowledge-graph-js#readme",
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "xo": "^0.19.0"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false
+  },
+  "ava": {
+    "snapshotDir": "snapshots"
+  },
+  "dependencies": {
+    "axios": "^0.17.1"
+  }
+}
