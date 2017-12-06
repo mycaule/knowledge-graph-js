@@ -10,3 +10,6 @@ Command line interface for Google Knowledge Graph
 
 - https://github.com/lukewendling/ddg-api
 - https://www.npmjs.com/package/ducksay-instant
+
+- https://www.npmjs.com/package/node-wolfram-api
+- https://www.npmjs.com/package/wolfram-alpha
