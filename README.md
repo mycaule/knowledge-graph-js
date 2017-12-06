@@ -34,14 +34,71 @@ $ node samples/quickstart.js
 ```javascript
 const knowledge = require('../index')
 
-knowledge.search('katy perry').then(res =>
-  console.log(JSON.stringify(res))
-)
+knowledge.search('katy perry').then(res => {
+  const topResult = res.itemListElement[0]
+  console.log(topResult)
+})
 
-// {"@context":{"@vocab":"http://schema.org/","goog":"http://schema.googleapis.com/","EntitySearchResult":"goog:EntitySearchResult","detailedDescription":"goog:detailedDescription","resultScore":"goog:resultScore","kg":"http://g.co/kg"},"@type":"ItemList","itemListElement":[{"@type":"EntitySearchResult","result":{"@id":"kg:/m/03y82t6","name":"Katy Perry","@type":["Person","Thing"],"description":"American singer-songwriter","image":{"contentUrl":"http://t3.gstatic.com/images?q=tbn:ANd9GcQrlKFmaiEtUImNiuD_pqzHPjDcjF4yaRThSFMh-rYuB8snFUfk","url":"https://en.wikipedia.org/wiki/Katy_Perry"},"detailedDescription":{"articleBody":"Katheryn Elizabeth Hudson, known professionally as Katy Perry, is an American singer and songwriter. After singing in church during her childhood, she pursued a career in gospel music as a teenager. ","url":"https://en.wikipedia.org/wiki/Katy_Perry","license":"https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"},"url":"http://www.katyperry.com/"},"resultScore":840.985046}]}
+/*
+{ '@id': 'kg:/m/03y82t6',
+  name: 'Katy Perry',
+  '@type': [ 'Person', 'Thing' ],
+  description: 'American singer-songwriter',
+  image:
+
+   { contentUrl: 'http://t3.gstatic.com/images?q=tbn:ANd9GcQrlKFmaiEtUImNiuD_pqzHPjDcjF4yaRThSFMh-rYuB8snFUfk',
+     url: 'https://en.wikipedia.org/wiki/Katy_Perry' },
+  detailedDescription:
+   { articleBody: 'Katheryn Elizabeth Hudson, known professionally as Katy Perry, is an American singer and songwriter. After singing in church during her childhood, she pursued a career in
+gospel music as a teenager. ',
+     url: 'https://en.wikipedia.org/wiki/Katy_Perry',
+     license: 'https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License' },
+  url: 'http://www.katyperry.com/' }
+*/
+```
+
+#### Keywords stemming
+```bash
+$ node samples/keywords.js
+```
+```javascript
+const natural = require('natural')
+const knowledge = require('../index')
+
+knowledge.search('nelson mandela').then(res => {
+  const topResult = res.itemListElement[0].result
+  const {description, detailedDescription} = topResult
+  console.log(topResult)
+  console.log(description)
+
+  natural.PorterStemmer.attach()
+  console.log(description.tokenizeAndStem())
+  console.log(detailedDescription.articleBody.tokenizeAndStem())
+})
+
+/*
+{ '@id': 'kg:/m/05g7q',
+  name: 'Nelson Mandela',
+  '@type': [ 'Person', 'Thing' ],
+  description: 'Former President of South Africa',
+  image:
+   { contentUrl: 'http://t1.gstatic.com/images?q=tbn:ANd9GcTFuD6oHFEztHdeTZTBHMQK-HHe1WKUeTzT0blYtptSvVlaOvRc',
+     url: 'https://commons.wikimedia.org/wiki/File:Nelson-Mandela-with-congressman-Engel.png' },
+  detailedDescription:
+   { articleBody: 'Nelson Rolihlahla Mandela was a South African anti-apartheid revolutionary, political leader, and philanthropist, who served as President of South Africa from 1994 to 1999
+. ',
+
+     url: 'https://en.wikipedia.org/wiki/Nelson_Mandela',
+     license: 'https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License' },
+  url: 'http://www.nelsonmandela.org/' }
+
+[ 'former', 'presid', 'south', 'africa' ]
+[ 'nelson', 'rolihlahla', 'mandela', 'south', 'african', 'anti', 'apartheid', 'revolutionari', 'polit', 'leader', 'philanthropist', 'serv', 'presid', 'south', 'africa', '1994', '1999' ]
+*/
 ```
 
 ## References
+- https://www.npmjs.com/package/knowledge-node
 - https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js
 - https://www.npmjs.com/package/archy
 - https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a

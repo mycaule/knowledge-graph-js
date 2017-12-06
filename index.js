@@ -10,7 +10,7 @@ try {
 
 const axios = require('axios').create({
   baseURL: 'https://kgsearch.googleapis.com/v1',
-  timeout: 1000
+  timeout: 2000
 })
 
 const search = query => {
