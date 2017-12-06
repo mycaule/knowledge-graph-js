@@ -17,7 +17,25 @@
   <br>
 </p>
 
-### References
+This library allows user to query Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises.
+
+##  Usage
+
+In Google Cloud Platform, make sure to activate *KnowledgeGraph Search API* and load your `GOOGLE_API_KEY` into `process.env`.
+
+See [the samples folder](/samples) for more usecases.
+
+### Running with Node.js
+
+#### Basic example
+```bash
+$ node samples/quickstart.js
+```
+```javascript
+...
+```
+
+## References
 - https://github.com/krismuniz/google-kgsearch
 - https://www.npmjs.com/package/knowledge-node
 - https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js
