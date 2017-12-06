@@ -1,5 +1,5 @@
 <p align="center">
-	<img width="250" src="https://www.staedtler.fr/fr/mandala-creator/assets/elements/jess_meleragni_6.svg" alt="Knowledge graph">
+	<img width="250" src="https://www.staedtler.fr/fr/mandala-creator/assets/elements/jess_meleragni_10.svg" alt="Knowledge graph">
 </p>
 <p align="center">
   Yet another client for Google Knowledge Graph API
