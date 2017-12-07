@@ -32,11 +32,10 @@ See [the samples folder](/samples) for more usecases.
 $ node samples/quickstart.js
 ```
 ```javascript
-const knowledge = require('../index')
+const knowledge = require('knowledge-graph-js')
 
 knowledge.search('katy perry').then(res => {
-  const topResult = res.itemListElement[0]
-  console.log(topResult)
+  console.log(res.top)
 })
 
 /*
@@ -63,12 +62,11 @@ $ node samples/keywords.js
 ```
 ```javascript
 const natural = require('natural')
-const knowledge = require('../index')
+const knowledge = require('knowledge-graph-js')
 
 knowledge.search('nelson mandela').then(res => {
-  const topResult = res.itemListElement[0].result
-  const {description, detailedDescription} = topResult
-  console.log(topResult)
+  const {description, detailedDescription} = res.top
+  console.log(res.top)
   console.log(description)
 
   natural.PorterStemmer.attach()
