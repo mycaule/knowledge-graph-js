@@ -1,4 +1,4 @@
-import {test, skip} from 'ava'
+import test from 'ava'
 
 const knowledge = require('./index')
 
@@ -56,9 +56,9 @@ test('VideoGame', verifyOneResult('Street Fighter II', 'VideoGame', 'Arcade game
 
 test('VideoGameSeries', verifyOneResult('Super Mario Bros.', 'VideoGameSeries', 'Video game series'))
 
-skip('Website', verifyOneResult('Amazon', 'Website', 'Website'))
+test('WebSite', verifyOneResult('Twitch', 'WebSite', 'Website'))
 
 test('404', async t => {
-  const error = await t.throws(knowledge.search('Crazy Query', 'Fake Type'))
+  const error = await t.throws(knowledge.search('', 'WebSite'))
   t.is(error.message, 'Request failed with status code 400')
 })

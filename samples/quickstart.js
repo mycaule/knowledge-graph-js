@@ -4,7 +4,6 @@ const patriarchy = require('patriarchy')
 const knowledge = require('../index')
 
 knowledge.search('katy perry').then(res => {
-  console.log(res.top)
-
+  console.log(patriarchy(res.top))
   console.log(patriarchy(res))
 })

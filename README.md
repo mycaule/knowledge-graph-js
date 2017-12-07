@@ -28,12 +28,24 @@ See [the samples folder](/samples) for more usecases.
 ### Running with Node.js
 
 #### Basic example
+
+```javascript
+const knowledge = require('knowledge-graph-js')
+
+// Search using only a query
+knowledge.search('katy perry')
+
+// Search specifying the entity type
+knowledge.search('Madison Square Garden', 'Place')
+
+// List of available graph entities
+knowledge.entities
+```
+
 ```bash
 $ node samples/quickstart.js
 ```
 ```javascript
-const knowledge = require('knowledge-graph-js')
-
 knowledge.search('katy perry').then(res => {
   console.log(res.top)
 })
@@ -62,7 +74,6 @@ $ node samples/keywords.js
 ```
 ```javascript
 const natural = require('natural')
-const knowledge = require('knowledge-graph-js')
 
 knowledge.search('nelson mandela').then(res => {
   const {description, detailedDescription} = res.top

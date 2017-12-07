@@ -3,32 +3,51 @@
 /* eslint new-cap: "off" */
 
 const S = require('superstruct')
+const isUrl = require('is-url')
 
-const EntitySearchResult = S.struct({
-  '@type': 'string',  // EntitySearchResult
+const graphEntities = ['Book', 'BookSeries', 'EducationalOrganization', 'Event', 'GovernmentOrganization', 'LocalBusiness', 'Movie', 'MovieSeries', 'MusicAlbum', 'MusicGroup', 'MusicRecording', 'Organization', 'Periodical', 'Person', 'Place', 'SportsTeam', 'TVEpisode', 'TVSeries', 'VideoGame', 'VideoGameSeries', 'WebSite']
+
+const struct = S.superstruct({
+  types: {
+    url: isUrl,
+    EntitySearchResult: v => v === 'EntitySearchResult',
+    ItemList: v => v === 'ItemList'
+  }
+})
+
+const EntitySearchResult = struct({
+  '@type': 'EntitySearchResult',
   result: {
     '@id': 'string',
     name: 'string',
     '@type': ['string'],
     description: 'string',
-    detailedDescription: S.struct.optional({
+    detailedDescription: struct.optional({
       articleBody: 'string',
-      url: 'string',
+      url: 'url',
       license: 'string'
     }),
-    image: S.struct.optional({
+    image: struct.optional({
       contentUrl: 'string',
-      url: 'string'
+      url: 'url'
     }),
-    url: 'string?'
+    url: 'url?'
   },
   resultScore: 'number'
 })
 
-const ItemList = S.struct({
+const ItemList = struct({
   '@context': 'object',
-  '@type': 'string', // ItemList
+  '@type': 'ItemList',
   itemListElement: [EntitySearchResult]
+})
+
+const ReqParams = struct({
+  query: 'string',
+  limit: 'number',
+  indent: 'boolean',
+  types: struct.enum(graphEntities),
+  key: 'string'
 })
 
 try {
@@ -42,15 +61,9 @@ const axios = require('axios').create({
   timeout: 2000
 })
 
-const search = (query, types) => {
+const search = (query, types, limit = 1, indent = true) => {
   return axios.get('/entities:search', {
-    params: {
-      query,
-      key: process.env.GOOGLE_API_KEY,
-      limit: 1,
-      indent: true,
-      types
-    }
+    params: ReqParams({query, limit, indent, types, key: process.env.GOOGLE_API_KEY})
   }).then(resp => {
     const itemList = ItemList(resp.data)
     const top = (itemList && itemList.itemListElement.length) ? EntitySearchResult(itemList.itemListElement[0]) : {}
@@ -58,4 +71,4 @@ const search = (query, types) => {
   })
 }
 
-module.exports = {search}
+module.exports = {search, graphEntities}
