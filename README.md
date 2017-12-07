@@ -17,7 +17,7 @@
   <br>
 </p>
 
-This library is a client for Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises allowing `then / catch` and `async / await` syntax.
+This library is a client for Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises allowing `then / catch` and `async / await` syntax. It is typed tested with [superstruct](https://github.com/ianstormtaylor/superstruct).
 
 ##  Usage
 
@@ -103,7 +103,7 @@ knowledge.search('nelson mandela').then(res => {
 
 ### Roadmap
 
-- [ ] Write classes for types and validate with [superstruct](https://github.com/ianstormtaylor/superstruct)
+- [x] Write classes for types and validate with [superstruct](https://github.com/ianstormtaylor/superstruct)
 - [ ] [Node Archy](https://www.npmjs.com/package/archy)
 - [ ] Investigate [DuckDuckGo library](https://github.com/lukewendling/ddg-api)
 - [ ] Investigate [DuckDuckGo CLI](https://www.npmjs.com/package/ducksay-instant)

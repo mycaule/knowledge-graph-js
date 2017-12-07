@@ -16,12 +16,6 @@ const verifyOneResult = (query, type, description) => async t => {
   t.true(top.resultScore > 50)
 }
 
-const failResult = (query, type) => async t => {
-  const results = await knowledge.search(query, type)
-  console.log(results)
-  t.true(true)
-}
-
 test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
 
 test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
@@ -64,4 +58,7 @@ test('VideoGameSeries', verifyOneResult('Super Mario Bros.', 'VideoGameSeries', 
 
 skip('Website', verifyOneResult('Amazon', 'Website', 'Website'))
 
-skip('404', failResult('Amazon', '404'))
+test('404', async t => {
+  const error = await t.throws(knowledge.search('Crazy Query', 'Fake Type'))
+  t.is(error.message, 'Request failed with status code 400')
+})

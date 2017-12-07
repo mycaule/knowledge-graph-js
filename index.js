@@ -5,7 +5,7 @@
 const S = require('superstruct')
 
 const EntitySearchResult = S.struct({
-  '@type': 'string',
+  '@type': 'string',  // EntitySearchResult
   result: {
     '@id': 'string',
     name: 'string',
@@ -23,6 +23,12 @@ const EntitySearchResult = S.struct({
     url: 'string?'
   },
   resultScore: 'number'
+})
+
+const ItemList = S.struct({
+  '@context': 'object',
+  '@type': 'string', // ItemList
+  itemListElement: [EntitySearchResult]
 })
 
 try {
@@ -46,8 +52,9 @@ const search = (query, types) => {
       types
     }
   }).then(resp => {
-    const top = (resp.data && resp.data.itemListElement.length) ? EntitySearchResult(resp.data.itemListElement[0]) : {}
-    return Object.assign({}, resp.data, {top})
+    const itemList = ItemList(resp.data)
+    const top = (itemList && itemList.itemListElement.length) ? EntitySearchResult(itemList.itemListElement[0]) : {}
+    return Object.assign({}, itemList, {top})
   })
 }
 
