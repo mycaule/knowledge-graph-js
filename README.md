@@ -102,7 +102,7 @@ knowledge.search('nelson mandela').then(res => {
 ### Roadmap
 
 - [x] Write classes for types and validate with [superstruct](https://github.com/ianstormtaylor/superstruct)
-- [ ] [Node Archy](https://www.npmjs.com/package/archy)
+- [x] [Node Archy](https://www.npmjs.com/package/archy)
 - [ ] Investigate [DuckDuckGo library](https://github.com/lukewendling/ddg-api)
 - [ ] Investigate [DuckDuckGo CLI](https://www.npmjs.com/package/ducksay-instant)
 - [ ] Investigate [Wolfram Alpha lib1](https://www.npmjs.com/package/node-wolfram-api)
