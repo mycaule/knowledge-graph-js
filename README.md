@@ -128,7 +128,7 @@ npm test
 ```
 
 ### Publishing
-```
+```bash
 npm version [patch, minor, major]
 npm publish
 ```
