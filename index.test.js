@@ -1,20 +1,14 @@
-import test from 'ava'
+import {test, skip} from 'ava'
 
 const knowledge = require('./index')
 
-const verifyOneResult = (query, type, description, debug) => async t => {
+const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query, type)
   t.is(typeof results['@context'], 'object')
   t.is(results['@type'], 'ItemList')
   t.is(typeof results.itemListElement, 'object')
 
   const top = results.top
-  if (debug) {
-    console.log(top)
-    console.log(top['@type'])
-    console.log(top.detailedDescription)
-  }
-
   t.is(top['@type'], 'EntitySearchResult')
   t.is(typeof top.result, 'object')
   t.is(top.result.description, description)
@@ -22,7 +16,13 @@ const verifyOneResult = (query, type, description, debug) => async t => {
   t.true(top.resultScore > 50)
 }
 
-test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film', true))
+const failResult = (query, type) => async t => {
+  const results = await knowledge.search(query, type)
+  console.log(results)
+  t.true(true)
+}
+
+test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
 
 test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
 
@@ -62,4 +62,6 @@ test('VideoGame', verifyOneResult('Street Fighter II', 'VideoGame', 'Arcade game
 
 test('VideoGameSeries', verifyOneResult('Super Mario Bros.', 'VideoGameSeries', 'Video game series'))
 
-// Test('Website', verifyOneResult('Amazon', 'Website', 'Video game series'))
+skip('Website', verifyOneResult('Amazon', 'Website', 'Website'))
+
+skip('404', failResult('Amazon', '404'))

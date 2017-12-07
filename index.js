@@ -2,17 +2,24 @@
 /* eslint import/no-unassigned-import: "off" */
 /* eslint new-cap: "off" */
 
-const superstruct = require('superstruct')
+const S = require('superstruct')
 
-const Result = superstruct.struct({
+const EntitySearchResult = S.struct({
   '@type': 'string',
   result: {
     '@id': 'string',
     name: 'string',
     '@type': ['string'],
     description: 'string',
-    detailedDescription: 'object?',
-    image: 'object?',
+    detailedDescription: S.struct.optional({
+      articleBody: 'string',
+      url: 'string',
+      license: 'string'
+    }),
+    image: S.struct.optional({
+      contentUrl: 'string',
+      url: 'string'
+    }),
     url: 'string?'
   },
   resultScore: 'number'
@@ -39,7 +46,7 @@ const search = (query, types) => {
       types
     }
   }).then(resp => {
-    const top = (resp.data && resp.data.itemListElement.length) ? Result(resp.data.itemListElement[0]) : {}
+    const top = (resp.data && resp.data.itemListElement.length) ? EntitySearchResult(resp.data.itemListElement[0]) : {}
     return Object.assign({}, resp.data, {top})
   })
 }
