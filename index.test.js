@@ -16,6 +16,11 @@ const verifyOneResult = (query, type, description) => async t => {
   t.true(top.resultScore > 50)
 }
 
+test('List of all entities', t => {
+  t.true(knowledge.entities.includes('Book'))
+  t.is(knowledge.entities.length, 21)
+})
+
 test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
 
 test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
