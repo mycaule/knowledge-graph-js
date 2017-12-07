@@ -1,6 +1,6 @@
 {
   "name": "knowledge-graph-js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Yet another client for Google Knowledge Graph",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "snapshotDir": "snapshots"
   },
   "dependencies": {
-    "axios": "^0.17.1"
+    "axios": "^0.17.1",
+    "superstruct": "^0.4.5"
   }
 }

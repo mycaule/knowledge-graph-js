@@ -21,7 +21,7 @@ This library is a client for Google [Knowledge Graph Search API](https://develop
 
 ##  Usage
 
-In Google Cloud Platform, make sure to activate *Knowledge Graph Search API* and load your `GOOGLE_API_KEY` into `process.env`.
+In *Google Cloud Platform*, make sure to activate *Knowledge Graph Search API* and load your `GOOGLE_API_KEY` into `process.env`.
 
 See [the samples folder](/samples) for more usecases.
 
@@ -104,6 +104,12 @@ knowledge.search('nelson mandela').then(res => {
 ### Roadmap
 
 - [ ] Write classes for types and validate with [superstruct](https://github.com/ianstormtaylor/superstruct)
+- [ ] [Node Archy](https://www.npmjs.com/package/archy)
+- [ ] Investigate [DuckDuckGo library](https://github.com/lukewendling/ddg-api)
+- [ ] Investigate [DuckDuckGo CLI](https://www.npmjs.com/package/ducksay-instant)
+- [ ] Investigate [Wolfram Alpha lib1](https://www.npmjs.com/package/node-wolfram-api)
+- [ ] Investigate [Wolfram Alpha lib2](https://www.npmjs.com/package/wolfram-alpha)
+
 
 ### Running the tests
 
@@ -126,8 +132,3 @@ npm publish
 * [Knowledge Graph Search API documentation](https://developers.google.com/knowledge-graph/)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
 * [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)
-* [Node Archy](https://www.npmjs.com/package/archy)
-* To investigate: [DuckDuckGo library](https://github.com/lukewendling/ddg-api)
-* To investigate: [DuckDuckGo CLI](https://www.npmjs.com/package/ducksay-instant)
-* To investigate: [Wolfram Alpha lib1](https://www.npmjs.com/package/node-wolfram-api)
-* To investigate: [Wolfram Alpha lib2](https://www.npmjs.com/package/wolfram-alpha)

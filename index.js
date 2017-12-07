@@ -1,5 +1,22 @@
 /* eslint import/no-unresolved: [2, { ignore: ['\.config.js$'] }] */
 /* eslint import/no-unassigned-import: "off" */
+/* eslint new-cap: "off" */
+
+const superstruct = require('superstruct')
+
+const Result = superstruct.struct({
+  '@type': 'string',
+  result: {
+    '@id': 'string',
+    name: 'string',
+    '@type': ['string'],
+    description: 'string',
+    detailedDescription: 'object?',
+    image: 'object?',
+    url: 'string?'
+  },
+  resultScore: 'number'
+})
 
 try {
   require('./config')
@@ -21,7 +38,10 @@ const search = (query, types) => {
       indent: true,
       types
     }
-  }).then(resp => resp.data)
+  }).then(resp => {
+    const top = (resp.data && resp.data.itemListElement.length) ? Result(resp.data.itemListElement[0]) : {}
+    return Object.assign({}, resp.data, {top})
+  })
 }
 
 module.exports = {search}

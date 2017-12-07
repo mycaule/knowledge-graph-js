@@ -8,18 +8,21 @@ const verifyOneResult = (query, type, description, debug) => async t => {
   t.is(results['@type'], 'ItemList')
   t.is(typeof results.itemListElement, 'object')
 
-  const topResult = results.itemListElement[0]
+  const top = results.top
   if (debug) {
-    console.log(topResult)
+    console.log(top)
+    console.log(top['@type'])
+    console.log(top.detailedDescription)
   }
-  t.is(topResult['@type'], 'EntitySearchResult')
-  t.is(typeof topResult.result, 'object')
-  t.is(topResult.result.description, description)
-  t.true(topResult.result['@type'].includes(type))
-  t.true(topResult.resultScore > 50)
+
+  t.is(top['@type'], 'EntitySearchResult')
+  t.is(typeof top.result, 'object')
+  t.is(top.result.description, description)
+  t.true(top.result['@type'].includes(type))
+  t.true(top.resultScore > 50)
 }
 
-test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
+test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film', true))
 
 test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
 
