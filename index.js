@@ -5,7 +5,7 @@
 const S = require('superstruct')
 const isUrl = require('is-url')
 
-const entities = ['Book', 'BookSeries', 'EducationalOrganization', 'Event', 'GovernmentOrganization', 'LocalBusiness', 'Movie', 'MovieSeries', 'MusicAlbum', 'MusicGroup', 'MusicRecording', 'Organization', 'Periodical', 'Person', 'Place', 'SportsTeam', 'TVEpisode', 'TVSeries', 'VideoGame', 'VideoGameSeries', 'WebSite', undefined]
+const entities = ['Book', 'BookSeries', 'EducationalOrganization', 'Event', 'GovernmentOrganization', 'LocalBusiness', 'Movie', 'MovieSeries', 'MusicAlbum', 'MusicGroup', 'MusicRecording', 'Organization', 'Periodical', 'Person', 'Place', 'SportsTeam', 'TVEpisode', 'TVSeries', 'VideoGame', 'VideoGameSeries', 'WebSite']
 
 const struct = S.superstruct({
   types: {
@@ -46,7 +46,7 @@ const ReqParams = struct({
   query: 'string',
   limit: 'number',
   indent: 'boolean',
-  types: struct.enum(entities),
+  types: struct.optional(struct.enum(entities)),
   key: 'string'
 })
 
