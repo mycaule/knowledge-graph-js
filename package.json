@@ -1,6 +1,6 @@
 {
   "name": "knowledge-graph-js",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yet another client for Google Knowledge Graph",
   "main": "index.js",
   "scripts": {
