@@ -72,6 +72,20 @@ gospel music as a teenager. ',
 */
 ```
 
+Comparing and merging results from different search providers.
+```bash
+$ node samples/benchmark.js
+```
+```javascript
+knowledge.google.search('katy perry').then(res => {
+  console.log(patriarchy(res.top))
+})
+
+knowledge.duckduckgo.search('katy perry').then(res => {
+  console.log(patriarchy(res.top))
+})
+```
+
 #### Keywords stemming
 ```bash
 $ node samples/keywords.js

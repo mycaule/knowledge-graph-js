@@ -5,6 +5,9 @@ const knowledge = require('./duckduckgo')
 const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query)
   t.true(results.AbstractText.includes(description))
+
+  const top = results.top
+  t.true(top.AbstractText.includes(description))
 }
 
 test('List of all categories', t => {

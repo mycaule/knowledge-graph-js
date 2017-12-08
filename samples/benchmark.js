@@ -8,5 +8,5 @@ knowledge.google.search('katy perry').then(res => {
 })
 
 knowledge.duckduckgo.search('katy perry').then(res => {
-  console.log(res)
+  console.log(patriarchy(res.top))
 })

@@ -66,6 +66,13 @@ const SearchResult = struct({
   Type: 'string'
 })
 
+const TopResult = struct({
+  AbstractText: 'string',
+  Abstract: 'string',
+  Results: [ResultElement],
+  Image: 'string'
+})
+
 const axios = require('axios').create({
   baseURL: 'https://api.duckduckgo.com',
   timeout: 2000
@@ -78,7 +85,9 @@ const search = (q, format = 'json', pretty = '0') => {
     params: {q, format, pretty}
   }).then(resp => {
     const data = SearchResult(resp.data)
-    return Object.assign({}, data)
+    const {AbstractText, Abstract, Results, Image} = data
+    const top = TopResult({AbstractText, Abstract, Results, Image})
+    return Object.assign({}, data, {top})
   })
 }
 

@@ -4,13 +4,8 @@ const knowledge = require('./google')
 
 const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query, type)
-  t.is(typeof results['@context'], 'object')
-  t.is(results['@type'], 'ItemList')
-  t.is(typeof results.itemListElement, 'object')
-
   const top = results.top
-  t.is(top['@type'], 'EntitySearchResult')
-  t.is(typeof top.result, 'object')
+
   t.is(top.result.description, description)
   t.true(top.result['@type'].includes(type))
   t.true(top.resultScore > 50)
