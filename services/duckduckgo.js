@@ -1,20 +1,59 @@
 /* eslint no-unused-vars: "off" */
 /* eslint new-cap: "off" */
+/* eslint camelcase: "off" */
 
 const S = require('superstruct')
+const isUrl = require('is-url')
 
-const SearchResult = S.struct({
+const struct = S.superstruct({
+  types: {
+    url: isUrl,
+    empty: v => v === ''
+  }
+})
+
+const ResultElement = struct({
+  Text: 'string',
+  Icon: {
+    Width: 'empty | number',
+    Height: 'empty | number',
+    URL: 'empty | url'
+  },
+  FirstURL: 'url',
+  Result: 'string'
+})
+
+const ResultElementDeep = struct({
+  Name: 'string',
+  Topics: [ResultElement]
+})
+
+const Infobox = struct({
+  content: [struct({
+    data_type: 'string',
+    wiki_order: 'number',
+    label: 'string',
+    value: 'string'
+  })],
+  meta: [struct({
+    label: 'string',
+    value: 'string',
+    data_type: 'string'
+  })]
+})
+
+const SearchResult = struct({
   Abstract: 'string',
   AbstractText: 'string',
   AbstractSource: 'string',
   AbstractURL: 'string',
   Image: 'string',
-  ImageIsLogo: 'string | number',
-  ImageHeight: 'string | number',
-  ImageWidth: 'string | number',
+  ImageIsLogo: 'empty | number',
+  ImageHeight: 'empty | number',
+  ImageWidth: 'empty | number',
   Heading: 'string',
   Entity: 'string',
-  Infobox: 'string | object',
+  Infobox: 'empty | object',
   meta: 'object | null',
   Answer: 'string',
   Redirect: 'string',
@@ -22,8 +61,8 @@ const SearchResult = S.struct({
   Definition: 'string',
   DefinitionSource: 'string',
   DefinitionURL: 'string',
-  RelatedTopics: ['object'],
-  Results: ['object'],
+  RelatedTopics: [struct.union([ResultElement, ResultElementDeep])],
+  Results: [ResultElement],
   Type: 'string'
 })
 

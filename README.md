@@ -116,7 +116,7 @@ knowledge.search('nelson mandela').then(res => {
 
 ### Roadmap
 
-- [x] Investigate [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
+- [ ] Unit tests for errors (API responses, validation errors from superstruct)
 - [ ] Investigate [Wolfram Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/) : [lib1](https://www.npmjs.com/package/node-wolfram-api), [lib2](https://www.npmjs.com/package/wolfram-alpha)
 
 ### Running the tests
