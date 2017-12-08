@@ -112,13 +112,8 @@ knowledge.search('nelson mandela').then(res => {
 
 ### Roadmap
 
-- [x] Write classes for types and validate with [superstruct](https://github.com/ianstormtaylor/superstruct)
-- [x] [Node Archy](https://www.npmjs.com/package/archy)
-- [ ] Investigate [DuckDuckGo library](https://github.com/lukewendling/ddg-api)
-- [ ] Investigate [DuckDuckGo CLI](https://www.npmjs.com/package/ducksay-instant)
-- [ ] Investigate [Wolfram Alpha lib1](https://www.npmjs.com/package/node-wolfram-api)
-- [ ] Investigate [Wolfram Alpha lib2](https://www.npmjs.com/package/wolfram-alpha)
-
+- [x] Investigate [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
+- [ ] Investigate [Wolfram Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/) : [lib1](https://www.npmjs.com/package/node-wolfram-api), [lib2](https://www.npmjs.com/package/wolfram-alpha)
 
 ### Running the tests
 
@@ -139,5 +134,7 @@ npm publish
 ## References
 
 * [Knowledge Graph Search API documentation](https://developers.google.com/knowledge-graph/)
+* [DuckDuckGO Instant Answer API](https://duckduckgo.com/api)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
+* [Franck Ledoux - node-duckduckgo package](https://github.com/franckLdx/node-duckduckgo)
 * [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)
