@@ -2,7 +2,7 @@
 	<img width="250" src="https://www.staedtler.fr/fr/mandala-creator/assets/elements/jess_meleragni_10.svg" alt="Knowledge graph">
 </p>
 <p align="center">
-  Yet another client for Google Knowledge Graph API
+  Yet another client for Google Knowledge Graph and DuckDuckGo Instant Answer API
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <br>
 </p>
 
-This library is a client for Google [Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) using ES6 promises allowing `then / catch` and `async / await` syntax. It is typed tested with [superstruct](https://github.com/ianstormtaylor/superstruct).
+This library is a client for [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) and [DuckDuckGo Instant Answer API](https://duckduckgo.com/api) using ES6 promises allowing `then / catch` and `async / await` syntax. It is typed tested with [superstruct](https://github.com/ianstormtaylor/superstruct).
 
 ##  Usage
 
@@ -134,7 +134,7 @@ npm publish
 ## References
 
 * [Knowledge Graph Search API documentation](https://developers.google.com/knowledge-graph/)
-* [DuckDuckGO Instant Answer API](https://duckduckgo.com/api)
+* [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
 * [Franck Ledoux - node-duckduckgo package](https://github.com/franckLdx/node-duckduckgo)
 * [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)
