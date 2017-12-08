@@ -72,7 +72,7 @@ gospel music as a teenager. ',
 */
 ```
 
-Comparing and merging results from different search providers.
+#### Comparing and merging results
 ```bash
 $ node samples/benchmark.js
 ```
