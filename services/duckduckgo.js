@@ -34,11 +34,10 @@ const axios = require('axios').create({
 
 const categories = ['A', 'D', 'C', 'N', 'E']
 
-const search = (q, format = 'json', pretty = '0', t = 'nameofapp') => {
+const search = (q, format = 'json', pretty = '0') => {
   return axios.get(`/?q=${q}`, {
-    params: {q, format, pretty, t}
+    params: {q, format, pretty}
   }).then(resp => {
-    console.log(resp.data)
     const data = SearchResult(resp.data)
     return Object.assign({}, data)
   })

@@ -17,7 +17,11 @@
   <br>
 </p>
 
-This library is a client for [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) and [DuckDuckGo Instant Answer API](https://duckduckgo.com/api) using ES6 promises allowing `then / catch` and `async / await` syntax. It is typed tested with [superstruct](https://github.com/ianstormtaylor/superstruct).
+This library is a client to lookup search providers for short answers:
+- providers are [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) and [DuckDuckGo Instant Answer API](https://duckduckgo.com/api),
+- the library uses ES6 promises allowing `then / catch` and `async / await` syntax.
+- API contracts are checked with [superstruct](https://github.com/ianstormtaylor/superstruct)
+- the library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js)
 
 ##  Usage
 
