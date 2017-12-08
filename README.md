@@ -140,5 +140,5 @@ npm publish
 * [Knowledge Graph Search API documentation](https://developers.google.com/knowledge-graph/)
 * [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
-* [Franck Ledoux - node-duckduckgo package](https://github.com/franckLdx/node-duckduckgo)
+* [Luke Wendling - ddg-api package](https://github.com/lukewendling/ddg-api)
 * [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)
