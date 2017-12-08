@@ -9,6 +9,7 @@ module.exports = {
     entities: google.entities
   },
   duckduckgo: {
-    search: duckduckgo.search
+    search: duckduckgo.search,
+    categories: duckduckgo.categories
   }
 }

@@ -1,4 +1,3 @@
-/* eslint import/no-unresolved: [2, { ignore: ['\.config.js$'] }] */
 /* eslint import/no-unassigned-import: "off" */
 /* eslint new-cap: "off" */
 
