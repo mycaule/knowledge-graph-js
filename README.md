@@ -131,7 +131,7 @@ knowledge.search('nelson mandela').then(res => {
 ### Roadmap
 
 - [ ] Unit tests for errors (API responses, validation errors from superstruct)
-- [ ] Investigate [Wolfram Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/) : [lib1](https://www.npmjs.com/package/node-wolfram-api), [lib2](https://www.npmjs.com/package/wolfram-alpha)
+- [ ] Clean the readme and samples
 
 ### Running the tests
 
@@ -153,6 +153,7 @@ npm publish
 
 * [Knowledge Graph Search API documentation](https://developers.google.com/knowledge-graph/)
 * [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
+* [Wolfram|Alpha Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
 * [Luke Wendling - ddg-api package](https://github.com/lukewendling/ddg-api)
 * [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)

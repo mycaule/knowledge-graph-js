@@ -1,6 +1,5 @@
 import test from 'ava'
-
-const knowledge = require('./duckduckgo')
+import * as knowledge from './duckduckgo'
 
 const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query)
