@@ -2,7 +2,7 @@
 	<img width="250" src="https://www.staedtler.fr/fr/mandala-creator/assets/elements/jess_meleragni_10.svg" alt="Knowledge graph">
 </p>
 <p align="center">
-  Yet another client for Google Knowledge Graph and DuckDuckGo Instant Answer API
+  Universal internet knowledge search client for Google, DuckDuckGo, Wolfram|Alpha
 </p>
 
 <p align="center">
@@ -17,21 +17,22 @@
   <br>
 </p>
 
-This library is a client to lookup search providers for short answers:
-- providers are [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/) and [DuckDuckGo Instant Answer API](https://duckduckgo.com/api),
-- the library uses ES6 promises allowing `then / catch` and `async / await` syntax.
-- API contracts are checked with [superstruct](https://github.com/ianstormtaylor/superstruct)
-- the library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js)
+This library is a ES6 client to get internet knowledge information from various providers:
+  - [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/),
+  - [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
+  - [Wolfram|Alpha Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/)
+
+The library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava), [superstruct](https://github.com/ianstormtaylor/superstruct) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js)
 
 ##  Usage
 
-In *Google Cloud Platform*, make sure to [activate *Knowledge Graph Search API*](https://developers.google.com/knowledge-graph/prereqs) and load your `GOOGLE_API_KEY` into `process.env`.
+In *Google Cloud Platform*, make sure to [activate *Knowledge Graph Search API*](https://developers.google.com/knowledge-graph/prereqs) and assign your *API key* to `process.env.GOOGLE_API_KEY`.
+
+In *Wolfram|Alpha* developer portal, [create an application](https://developer.wolframalpha.com/portal/myapps/) and assign your *AppID* to `process.env.WOLFRAM_APP_ID`.
 
 See [the samples folder](/samples) for more usecases.
 
 ### Running with Node.js
-
-#### Basic example
 
 ```javascript
 const knowledge = require('knowledge-graph-js')
@@ -45,6 +46,7 @@ knowledge.search('Madison Square Garden', 'Place')
 // List of available graph entities
 knowledge.entities
 ```
+#### Basic example
 
 ```bash
 $ node samples/quickstart.js
@@ -72,7 +74,7 @@ gospel music as a teenager. ',
 */
 ```
 
-#### Comparing and merging results
+#### Benchmarking results
 ```bash
 $ node samples/benchmark.js
 ```
@@ -84,9 +86,13 @@ knowledge.google.search('katy perry').then(res => {
 knowledge.duckduckgo.search('katy perry').then(res => {
   console.log(patriarchy(res.top))
 })
+
+knowledge.wolfram.search('katy perry').then(res => {
+  console.log(res)
+})
 ```
 
-#### Keywords stemming
+#### Keywords extraction
 ```bash
 $ node samples/keywords.js
 ```
@@ -128,23 +134,12 @@ knowledge.search('nelson mandela').then(res => {
 
 [Changes and improvements](https://github.com/mycaule/knowledge-graph-js/wiki) are welcome! Feel free to fork and open a pull request into `master`.
 
+You can lint the code and run all unit tests using `npm test`.
+
 ### Roadmap
 
 - [ ] Unit tests for errors (API responses, validation errors from superstruct)
-- [ ] Clean the readme and samples
-
-### Running the tests
-
-You can lint the code and run all unit tests using that script.
-```bash
-npm test
-```
-
-### Publishing
-```bash
-npm version [patch, minor, major]
-npm publish
-```
+- [ ] Make the `README` clearer and write more code samples
 
 ### License
 `knowledge-graph-js` is licensed under the [Apache 2.0 License](https://github.com/mycaule/knowledge-graph-js/blob/master/LICENSE).

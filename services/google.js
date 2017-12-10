@@ -53,7 +53,9 @@ const ReqParams = struct({
 try {
   require('./config')
 } catch (err) {
-  console.log('Using environment parameters')
+  if (process.env.GOOGLE_API_KEY === undefined) {
+    throw new Error('You must set GOOGLE_API_KEY in your environment variables')
+  }
 }
 
 const axios = require('axios').create({

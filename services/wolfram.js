@@ -5,7 +5,9 @@
 try {
   require('./config')
 } catch (err) {
-  console.log('Using environment parameters')
+  if (process.env.WOLFRAM_APP_ID === undefined) {
+    throw new Error('You must set WOLFRAM_APP_ID in your environment variables')
+  }
 }
 
 const TIMEOUT = 5
