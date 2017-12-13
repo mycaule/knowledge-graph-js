@@ -15,7 +15,7 @@ test('List of all entities', t => {
   t.is(knowledge.entities.length, 21)
 })
 
-test('Book', verifyOneResult('The Jungle Book', 'Book', 'Book by Rudyard Kipling'))
+test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
 
 test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
 

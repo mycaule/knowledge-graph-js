@@ -22,7 +22,7 @@ This library is a ES6 client to get internet knowledge information from various 
   - [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
   - [Wolfram|Alpha Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/)
 
-The library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava), [superstruct](https://github.com/ianstormtaylor/superstruct) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js)
+The library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava), [superstruct](https://github.com/ianstormtaylor/superstruct) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js).
 
 ##  Usage
 
@@ -79,6 +79,8 @@ gospel music as a teenager. ',
 $ node samples/benchmark.js
 ```
 ```javascript
+const patriarchy = require('patriarchy')
+
 knowledge.google.search('katy perry').then(res => {
   console.log(patriarchy(res.top))
 })
@@ -138,8 +140,8 @@ You can lint the code and run all unit tests using `npm test`.
 
 ### Roadmap
 
-- [ ] Unit tests for errors (API responses, validation errors from superstruct)
-- [ ] Make the `README` clearer and write more code samples
+* Unit tests for errors (API responses, validation errors from superstruct)
+* Make the `README` clearer and write more code samples
 
 ### License
 `knowledge-graph-js` is licensed under the [Apache 2.0 License](https://github.com/mycaule/knowledge-graph-js/blob/master/LICENSE).
@@ -151,4 +153,4 @@ You can lint the code and run all unit tests using `npm test`.
 * [Wolfram|Alpha Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/)
 * [Sofia Martins - knowledge-node package](https://www.npmjs.com/package/knowledge-node)
 * [Luke Wendling - ddg-api package](https://github.com/lukewendling/ddg-api)
-* [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a), check also the [source code](https://github.com/googlecreativelab/mystery-animal/blob/master/functions/modules/KnowledgeGraphQuery.js)
+* [Nicole He - Voice Technology is an Opportunity to Make Weird Stuff](https://medium.com/@nicolehe/voice-technology-is-an-opportunity-to-make-weird-stuff-d4296ce7448a)

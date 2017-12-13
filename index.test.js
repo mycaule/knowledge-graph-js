@@ -2,14 +2,9 @@ import test from 'ava'
 import * as knowledge from './index'
 
 const verifyOneResult = (engine, query, type, description) => async t => {
-  const results = await engine.search(query, type)
-  t.is(typeof results['@context'], 'object')
-  t.is(results['@type'], 'ItemList')
-  t.is(typeof results.itemListElement, 'object')
-
+  const results = await knowledge.search(query, type)
   const top = results.top
-  t.is(top['@type'], 'EntitySearchResult')
-  t.is(typeof top.result, 'object')
+
   t.is(top.result.description, description)
   t.true(top.result['@type'].includes(type))
   t.true(top.resultScore > 50)
