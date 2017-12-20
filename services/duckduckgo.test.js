@@ -22,7 +22,7 @@ test('EducationalOrganization', verifyOneResult('MIT', 'EducationalOrganization'
 
 test('Event', verifyOneResult('fall of the Berlin wall', 'Event', ''))
 
-test('GovernmentOrganization', verifyOneResult('Indian Space Research Organisation', 'GovernmentOrganization', 'The Indian Space Research Organisation is the space agency of the Government of India headquartered in the city of Bengaluru'))
+test('GovernmentOrganization', verifyOneResult('Indian Space Research Organisation', 'GovernmentOrganization', 'The Indian Space Research Organisation is the space agency of the Government of India headquartered in the city of Bangalore'))
 
 test('LocalBusiness', verifyOneResult('La Tour d\'Argent', 'LocalBusiness', 'La Tour d\'Argent is a historic restaurant in Paris, France'))
 

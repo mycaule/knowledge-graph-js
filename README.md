@@ -140,7 +140,7 @@ You can lint the code and run all unit tests using `npm test`.
 
 ### Roadmap
 
-* Unit tests for errors (API responses, validation errors from superstruct)
+* Unit tests for errors (API responses, validation errors from superstruct) [returning-errors](https://github.com/ianstormtaylor/superstruct/blob/master/examples/returning-errors.js), [throwing-errors](https://github.com/ianstormtaylor/superstruct/blob/master/examples/throwing-errors.js), [custom-errors](https://github.com/ianstormtaylor/superstruct/blob/master/examples/custom-errors.js)
 * Make the `README` clearer and write more code samples
 
 ### License
