@@ -17,13 +17,13 @@ test('List of all entities', t => {
 
 test('Book', verifyOneResult('The Jungle Book', 'Book', '1967 film'))
 
-test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Book series'))
+test('BookSeries', verifyOneResult('Lord of the Rings', 'BookSeries', 'Literary series'))
 
 test('EducationalOrganization', verifyOneResult('MIT', 'EducationalOrganization', 'Private university in Cambridge, Massachusetts'))
 
 test('Event', verifyOneResult('fall of the Berlin wall', 'Event', 'Event'))
 
-test('GovernmentOrganization', verifyOneResult('Indian Space Research Organisation', 'GovernmentOrganization', 'Research and development company'))
+test('GovernmentOrganization', verifyOneResult('Indian Space Research Organisation', 'GovernmentOrganization', 'Development and research. company'))
 
 test('LocalBusiness', verifyOneResult('La Tour d\'Argent', 'LocalBusiness', 'French restaurant in Paris, France'))
 
