@@ -2,7 +2,7 @@
 // // Please make sure to set process.env.WOLFRAM_APP_ID = 'XXxxXxXxxXXxxXXXXXxXXXXXXxXXXXXXXXXXXXX'
 
 const patriarchy = require('patriarchy')
-const knowledge = require('../index')
+const knowledge = require('..')
 
 knowledge.google.search('katy perry').then(res => {
   console.log(patriarchy(res.top))

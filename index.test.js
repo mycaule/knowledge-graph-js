@@ -1,5 +1,5 @@
 import test from 'ava'
-import * as knowledge from './index'
+import * as knowledge from '.'
 
 const verifyOneResult = (engine, query, type, description) => async t => {
   const results = await knowledge.search(query, type)

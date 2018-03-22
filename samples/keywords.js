@@ -1,7 +1,7 @@
 // Please make sure to set process.env.GOOGLE_API_KEY = 'XXxxXxXxxXXxxXXXXXxXXXXXXxXXXXXXXXXXXXX'
 
 const natural = require('natural')
-const knowledge = require('../index')
+const knowledge = require('..')
 
 const tokenizer = new natural.WordTokenizer()
 
