@@ -1,6 +1,6 @@
-/* eslint no-unused-vars: "off" */
-/* eslint new-cap: "off" */
-/* eslint camelcase: "off" */
+/* eslint no-unused-vars: "off" -- Infobox mirrors the API payload and is kept for reference */
+/* eslint new-cap: "off" -- superstruct validators are PascalCase but called as functions */
+/* eslint camelcase: "off" -- field names mirror the DuckDuckGo API payload */
 
 const S = require('superstruct')
 const isUrl = require('is-url')
@@ -80,15 +80,13 @@ const axios = require('axios').create({
 
 const categories = ['A', 'D', 'C', 'N', 'E']
 
-const search = (q, format = 'json', pretty = '0') => {
-  return axios.get(`/?q=${q}`, {
-    params: {q, format, pretty}
-  }).then(resp => {
-    const data = SearchResult(resp.data)
-    const {AbstractText, Abstract, Results, Image} = data
-    const top = TopResult({AbstractText, Abstract, Results, Image})
-    return Object.assign({}, data, {top})
-  })
-}
+const search = (q, format = 'json', pretty = '0') => axios.get(`/?q=${q}`, {
+  params: {q, format, pretty}
+}).then(resp => {
+  const data = SearchResult(resp.data)
+  const {AbstractText, Abstract, Results, Image} = data
+  const top = TopResult({AbstractText, Abstract, Results, Image})
+  return {...data, top}
+})
 
 module.exports = {search, categories}

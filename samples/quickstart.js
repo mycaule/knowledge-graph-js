@@ -3,6 +3,6 @@
 const patriarchy = require('patriarchy')
 const knowledge = require('..')
 
-knowledge.search('katy perry').then(res => {
-  console.log(patriarchy(res.top))
+knowledge.search('katy perry').then(response => {
+  console.log(patriarchy(response.top))
 })

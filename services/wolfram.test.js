@@ -1,5 +1,5 @@
 import test from 'ava'
-import * as knowledge from './wolfram'
+import knowledge from './wolfram.js'
 
 test('Wolfram Short Answers', async t => {
   const resultMetric = await knowledge.search('How far is Los Angeles from New York?')
