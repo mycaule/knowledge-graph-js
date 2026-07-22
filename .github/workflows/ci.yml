@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  schedule:
+    # Weekly, to surface upstream API drift in the live tests below.
+    - cron: '0 4 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # xo 4 requires Node >=22, ava 8 requires ^22.20 || ^24.12 || >=26.
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npx xo
+
+  audit:
+    name: Audit dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm audit --audit-level=moderate
+
+  live-tests:
+    name: Live API tests (informational)
+    # Deliberately not run on push or pull_request. The suite calls the real
+    # Google, Wolfram and DuckDuckGo APIs, so it needs secrets that forks do
+    # not have, and it fails whenever an upstream payload drifts from the
+    # superstruct schemas or the hardcoded assertions. Keeping it scheduled
+    # and non-blocking means drift gets reported without wedging every PR.
+    # Promote this to a required check once recorded fixtures replace the
+    # live calls.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      - name: Check API credentials are configured
+        id: creds
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
+        run: |
+          if [ -z "$GOOGLE_API_KEY" ] || [ -z "$WOLFRAM_APP_ID" ]; then
+            echo 'Secrets GOOGLE_API_KEY and/or WOLFRAM_APP_ID are not set; skipping the live tests.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run tests against live APIs
+        if: steps.creds.outputs.ready == 'true'
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          WOLFRAM_APP_ID: ${{ secrets.WOLFRAM_APP_ID }}
+        run: npx ava --verbose
