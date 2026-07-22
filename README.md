@@ -6,8 +6,6 @@
 </p>
 
 <p align="center">
-  <a href="http://travis-ci.org/mycaule/knowledge-graph-js"><img src="https://api.travis-ci.org/mycaule/knowledge-graph-js.svg?branch=master" alt="Build Status"></a>
-	<br>
 	<a href="https://www.npmjs.com/package/knowledge-graph-js"><img src="https://img.shields.io/npm/v/knowledge-graph-js.svg" alt="npm package"></a>
 	<a href="https://www.npmjs.com/package/knowledge-graph-js"><img src="https://img.shields.io/npm/dw/knowledge-graph-js.svg" alt="npm package"></a>
 	<a href="https://www.npmjs.com/package/knowledge-graph-js"><img src="https://img.shields.io/npm/l/knowledge-graph-js.svg" alt="npm package"></a>
@@ -20,7 +18,7 @@ This library is a ES6 client to get internet knowledge information from various 
   - [DuckDuckGo Instant Answer API](https://duckduckgo.com/api)
   - [Wolfram|Alpha Short Answers API](https://products.wolframalpha.com/short-answers-api/documentation/)
 
-The library is tested out recurrently on a dataset using [ava](https://github.com/avajs/ava), [superstruct](https://github.com/ianstormtaylor/superstruct) and [Travis CI](http://travis-ci.org/mycaule/knowledge-graph-js).
+The library is tested out on a dataset using [ava](https://github.com/avajs/ava) and [superstruct](https://github.com/ianstormtaylor/superstruct).
 
 ##  Usage
 
