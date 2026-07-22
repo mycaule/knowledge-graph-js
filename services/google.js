@@ -1,6 +1,6 @@
-/* eslint import/no-unresolved: [2, { ignore: ['\.config.js$'] }] */
-/* eslint import/no-unassigned-import: "off" */
-/* eslint new-cap: "off" */
+/* eslint import-x/no-unresolved: [2, {ignore: ['\.config.js$']}] -- ./config is an optional, git-ignored credentials file */
+/* eslint import-x/no-unassigned-import: "off" -- ./config is required for its side effect of setting env vars */
+/* eslint new-cap: "off" -- superstruct validators are PascalCase but called as functions */
 
 const S = require('superstruct')
 const isUrl = require('is-url')
@@ -42,7 +42,7 @@ const ItemList = struct({
   itemListElement: [EntitySearchResult]
 })
 
-const ReqParams = struct({
+const RequestParameters = struct({
   query: 'string',
   limit: 'number',
   indent: 'boolean',
@@ -52,7 +52,7 @@ const ReqParams = struct({
 
 try {
   require('./config')
-} catch (err) {
+} catch {
   if (process.env.GOOGLE_API_KEY === undefined) {
     throw new Error('You must set GOOGLE_API_KEY in your environment variables')
   }
@@ -63,14 +63,12 @@ const axios = require('axios').create({
   timeout: 2000
 })
 
-const search = (query, types, limit = 1, indent = true) => {
-  return axios.get('/entities:search', {
-    params: ReqParams({query, limit, indent, types, key: process.env.GOOGLE_API_KEY})
-  }).then(resp => {
-    const itemList = ItemList(resp.data)
-    const top = (itemList && itemList.itemListElement.length) ? EntitySearchResult(itemList.itemListElement[0]) : {}
-    return Object.assign({}, itemList, {top})
-  })
-}
+const search = (query, types, limit = 1, indent = true) => axios.get('/entities:search', {
+  params: RequestParameters({query, limit, indent, types, key: process.env.GOOGLE_API_KEY})
+}).then(resp => {
+  const itemList = ItemList(resp.data)
+  const top = (itemList && itemList.itemListElement.length > 0) ? EntitySearchResult(itemList.itemListElement[0]) : {}
+  return {...itemList, top}
+})
 
 module.exports = {search, entities}

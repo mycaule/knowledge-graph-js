@@ -4,14 +4,14 @@
 const patriarchy = require('patriarchy')
 const knowledge = require('..')
 
-knowledge.google.search('katy perry').then(res => {
-  console.log(patriarchy(res.top))
+knowledge.google.search('katy perry').then(response => {
+  console.log(patriarchy(response.top))
 })
 
-knowledge.duckduckgo.search('katy perry').then(res => {
-  console.log(patriarchy(res.top))
+knowledge.duckduckgo.search('katy perry').then(response => {
+  console.log(patriarchy(response.top))
 })
 
-knowledge.wolfram.search('katy perry').then(res => {
-  console.log(res)
+knowledge.wolfram.search('katy perry').then(response => {
+  console.log(response)
 })

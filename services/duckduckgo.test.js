@@ -1,11 +1,11 @@
 import test from 'ava'
-import * as knowledge from './duckduckgo'
+import knowledge from './duckduckgo.js'
 
 const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query)
   t.true(results.AbstractText.includes(description))
 
-  const top = results.top
+  const {top} = results
   t.true(top.AbstractText.includes(description))
 }
 

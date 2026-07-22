@@ -5,8 +5,8 @@ const knowledge = require('..')
 
 const tokenizer = new natural.WordTokenizer()
 
-knowledge.search('nelson mandela').then(res => {
-  const topResult = res.itemListElement[0].result
+knowledge.search('nelson mandela').then(response => {
+  const topResult = response.itemListElement[0].result
   const {description, detailedDescription} = topResult
   console.log(topResult)
   console.log(description)

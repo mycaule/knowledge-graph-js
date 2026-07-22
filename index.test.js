@@ -1,9 +1,9 @@
 import test from 'ava'
-import * as knowledge from '.'
+import knowledge from './index.js'
 
 const verifyOneResult = (engine, query, type, description) => async t => {
   const results = await knowledge.search(query, type)
-  const top = results.top
+  const {top} = results
 
   t.is(top.result.description, description)
   t.true(top.result['@type'].includes(type))

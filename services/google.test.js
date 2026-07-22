@@ -1,9 +1,9 @@
 import test from 'ava'
-import * as knowledge from './google'
+import knowledge from './google.js'
 
 const verifyOneResult = (query, type, description) => async t => {
   const results = await knowledge.search(query, type)
-  const top = results.top
+  const {top} = results
 
   t.is(top.result.description, description)
   t.true(top.result['@type'].includes(type))
@@ -58,6 +58,6 @@ test('VideoGameSeries', verifyOneResult('Super Mario Bros.', 'VideoGameSeries', 
 test('WebSite', verifyOneResult('Twitch', 'WebSite', 'Website'))
 
 test('404', async t => {
-  const error = await t.throws(knowledge.search('', 'WebSite'))
+  const error = await t.throwsAsync(knowledge.search('', 'WebSite'))
   t.is(error.message, 'Request failed with status code 400')
 })
