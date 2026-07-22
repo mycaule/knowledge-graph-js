@@ -7,8 +7,6 @@
 
 <p align="center">
   <a href="http://travis-ci.org/mycaule/knowledge-graph-js"><img src="https://api.travis-ci.org/mycaule/knowledge-graph-js.svg?branch=master" alt="Build Status"></a>
-  <a href="https://david-dm.org/mycaule/knowledge-graph-js"><img src="https://david-dm.org/mycaule/knowledge-graph-js/status.svg" alt="dependencies Status"></a>
-  <a href="https://david-dm.org/mycaule/knowledge-graph-js?type=dev"><img src="https://david-dm.org/mycaule/knowledge-graph-js/dev-status.svg" alt="devDependencies Status"></a>
 	<br>
 	<a href="https://www.npmjs.com/package/knowledge-graph-js"><img src="https://img.shields.io/npm/v/knowledge-graph-js.svg" alt="npm package"></a>
 	<a href="https://www.npmjs.com/package/knowledge-graph-js"><img src="https://img.shields.io/npm/dw/knowledge-graph-js.svg" alt="npm package"></a>
