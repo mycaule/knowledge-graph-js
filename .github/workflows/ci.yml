@@ -4,9 +4,6 @@ on:
   push:
     branches: [master]
   pull_request:
-  schedule:
-    # Weekly, to surface upstream API drift in the live tests below.
-    - cron: '0 4 * * 0'
   workflow_dispatch:
 
 permissions:
